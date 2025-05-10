@@ -146,12 +146,13 @@ class Doctor extends Authenticatable implements JWTSubject
         }
 
         if (isset($filters['review_rating'])) {
-            $query->whereHas('reviews', function ($query) use ($filters) {
-                $query->selectRaw('AVG(rating) as average_rating')
+            $query->whereHas('reviews', function ($subQuery) use ($filters) {
+                $subQuery->selectRaw('doctor_id, AVG(rating) as average_rating')
                     ->groupBy('doctor_id')
                     ->having('average_rating', '>=', $filters['review_rating']);
-            });
+        });
         }
+
 
         // Filter by minimum price
         if (isset($filters['min_price'])) {

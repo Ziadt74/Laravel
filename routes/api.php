@@ -138,7 +138,7 @@ Route::group(['middleware' => ['jwt_verifier:api']], function () {
 
         // Patient Reviews
         Route::get('doctors/{id}/reviews', [ReviewController::class, 'getDoctorReviews']);
-        Route::get('doctors/{id}/reviews/create', [ReviewController::class, 'store']);
+        Route::post('doctors/{id}/reviews/create', [ReviewController::class, 'store']);
         Route::post('reviews/{id}/update', [ReviewController::class, 'update']);
         Route::post('reviews/{id}/delete', [ReviewController::class, 'destroy']);
 

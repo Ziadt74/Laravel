@@ -27,7 +27,7 @@ Route::get('/user', function (Request $request) {
 
 
 Route::get('/hi', function () {
-    return 'Hello';
+    return 'Hello hello';
 });
 
 // Route::group(['prefix' => 'auth/{role?}'], function () {
